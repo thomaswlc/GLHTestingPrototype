@@ -1,4 +1,182 @@
-.message {
-    font-weight: 600;
-    color: blue;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.top-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* LEFT: LOGO */
+.logo {
+    justify-self: start;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.main-row {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.feature-image {
+    flex: 2;
+}
+
+.feature-image img {
+    width: 100%;
+    height: auto;
+}
+
+.map-container {
+    flex: 1;
+    <iframe 
+        width="100%"
+        height="300" 
+        style="border: 0" 
+        src="https://www.google.com/maps?q=London&output=embed"> 
+    </iframe>
+}
+
+#map {
+    width: 100%;
+    height: 300px; /* REQUIRED or map won't show */
+    border-radius: 10px;
+}
+
+/* RIGHT: NAV */
+.nav-menu {
+    justify-self: end;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    }
+
+.nav-menu li {
+    background: #ccc;
+    padding: 8px 14px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.nav-menu li:hover {
+    background: #999;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+
+/* PRODUCTS SECTION */
+.products {
+    height: 200px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: black;
+}
+
+/* GREETING TEXT */
+.greeting {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Home button (icon style) */
+.home-btn {
+    background: none;
+    padding: 0;
+}
+
+.home-btn img {
+    height: 24px;
+    width: 24px;
+    display: block;
+}
+
+/* Align nicely with other buttons */
+.nav-menu ul {
+    align-items: center;
+}
+
+/* Optional hover effect */
+.home-btn:hover {
+    opacity: 0.7;
+}
+
+/* PRODUCERS SECTION */
+.producers {
+    padding: 40px 20px;
+}
+
+.producers h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* GRID LAYOUT */
+.producer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* CARD STYLE */
+.producer-card {
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    background: #f5f5f5;
+}
+
+/* NAME */
+.producer-card h3 {
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin: 0 0 10px 0;
+}
+
+/* PROFESSION */
+.producer-card .profession {
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin: 0 0 10px 0;
+}
+
+/* STORY */
+.producer-card .story {
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 10px;
+    height: 200px;
+}
+
+@media (max-width: 1000px) {
+    .producer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .producer-grid {
+        grid-template-columns: 1fr;
+    }
 }

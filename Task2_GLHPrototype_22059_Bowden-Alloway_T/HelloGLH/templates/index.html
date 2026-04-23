@@ -1,10 +1,28 @@
-<html>
-<head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" type="text/css" href="static/site.css" />
-</head>
+{% extends "base.html" %}
 
-<body>
-    <span class="message">{{ message }}</span>{{ content }}
-</body>
-</html>
+{% block content %}
+
+<section class="products">
+    <h2>Featured products</h2>
+</section>
+
+<section class="greeting">
+    <p>{{ content }}</p>
+</section>
+
+<section class="producers">
+    <h2>Our Producers</h2>
+
+    <div class="producer-grid">
+
+        {% for producer in producers %}
+        <div class="producer-card">
+            <h3>{{ producer.name }}</h3>
+            <p class="profession">{{ producer.profession }}</p>
+            <p class="story">{{ producer.story }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
