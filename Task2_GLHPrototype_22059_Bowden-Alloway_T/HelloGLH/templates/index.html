@@ -2,8 +2,35 @@
 
 {% block content %}
 
-<section class="products">
+<section class="featured">
     <h2>Featured products</h2>
+
+    <div class="slideshow">
+        {% for product in products %}
+        <div class="slide {% if loop.first %}active{% endif %}">
+            <img src="{{ url_for('static', filename=ArtisanBreadStock.jpg) }}">
+            <div class="caption">{{ product.name }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="slideshow">
+        {% for product in products %}
+        <div class="slide {% if loop.first %}active{% endif %}">
+            <img src="{{ url_for('static', filename=FruitBasketStock.jpeg) }}">
+            <div class="caption">{{ product.name }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="slideshow">
+        {% for product in products %}
+        <div class="slide {% if loop.first %}active{% endif %}">
+            <img src="{{ url_for('static', filename=DairyProductStock.png) }}">
+            <div class="caption">{{ product.name }}</div>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 
 <section class="greeting">

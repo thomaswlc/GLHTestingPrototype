@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.py" />
+    <Compile Include="models.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HelloGLH\views.py">
       <SubType>Code</SubType>
     </Compile>
@@ -37,10 +40,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HelloGLH\static\ArtisanBreadStock.jpg" />
+    <Content Include="HelloGLH\static\ArtisanBreadStock.png" />
+    <Content Include="HelloGLH\static\DairyProductStock.png" />
     <Content Include="HelloGLH\static\FeaturedImage.png" />
+    <Content Include="HelloGLH\static\FruitBasketStock.jpeg" />
     <Content Include="HelloGLH\static\GLHLogo.png" />
     <Content Include="HelloGLH\static\Hero.jpg" />
     <Content Include="HelloGLH\static\HomeIcon.png" />
+    <Content Include="HelloGLH\static\script.js" />
     <Content Include="HelloGLH\static\site.css" />
     <Content Include="HelloGLH\templates\about.html" />
     <Content Include="HelloGLH\templates\base.html" />

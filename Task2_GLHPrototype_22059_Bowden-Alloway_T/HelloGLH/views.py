@@ -1,11 +1,15 @@
 from flask import render_template
 from HelloGLH import app
 from datetime import datetime
+from models import session, Producer, Product
 
 
 @app.route('/')
 @app.route('/home')
 def home():
+    producers = session.query(Producer).all()
+    products = session.query(Product).all()
+
     producers = [
         {
             "name": "John Smith",
@@ -33,7 +37,8 @@ def home():
     return render_template(
         "index.html",
         title="Home",
-        producers=producers
+        producers=producers,
+        products=products
     )
 
 @app.route('/market')
