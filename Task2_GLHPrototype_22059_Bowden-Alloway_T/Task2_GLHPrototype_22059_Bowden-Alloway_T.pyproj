@@ -52,6 +52,7 @@
     <Content Include="HelloGLH\static\GLHLogo.png" />
     <Content Include="HelloGLH\static\Hero.jpg" />
     <Content Include="HelloGLH\static\HomeIcon.png" />
+    <Content Include="HelloGLH\static\MapMarket.png" />
     <Content Include="HelloGLH\static\script.js" />
     <Content Include="HelloGLH\static\site.css" />
     <Content Include="HelloGLH\templates\about.html" />

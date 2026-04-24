@@ -1,6 +1,36 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-<h2>Markets Page</h2>
-<p>Welcome to the markets page.</p>
+
+<h2>Explore Local Markets</h2>
+
+<div class="market-map">
+
+    <!-- Map background -->
+    <img src="{{ url_for('static', filename='MapMarket.png') }}" class="map-image">
+
+    <!-- Markers -->
+    <div class="marker" style="top: 53.8%; left: 49.5%;" onclick="showInfo('borough')">📍</div>
+    <div class="marker" style="top: 22.5%; left: 27%;" onclick="showInfo('camden')">📍</div>
+    <div class="marker" style="top: 60%; left: 91.3%;" onclick="showInfo('greenwich')">📍</div>
+
+</div>
+
+<!-- Info box -->
+<div id="market-info" class="market-info"></div>
+
+<script>
+    function showInfo(market) {
+        const infoBox = document.getElementById("market-info");
+
+        const data = {
+            borough: "<h3>Borough Market</h3><p>Fresh produce, artisan food</p>",
+            camden: "<h3>Camden Market</h3><p>Street food and crafts</p>",
+            greenwich: "<h3>Greenwich Market</h3><p>Local traders and goods</p>"
+        };
+
+        infoBox.innerHTML = data[market];
+    }
+</script>
+
 {% endblock %}

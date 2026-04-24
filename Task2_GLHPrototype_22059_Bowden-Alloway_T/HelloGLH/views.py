@@ -1,14 +1,16 @@
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_user, logout_user, login_required, current_user, UserMixin
+from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
-from HelloGLH import app
+from HelloGLH import app, login_manager
 from datetime import datetime
 from models import DATABASE_URL, session, Producer, Product, User
 
+@login_manager.user_loader
+def load_user(user_id):
+    return session.get(User, int(user_id))
 @app.route('/')
 @app.route('/home')
 def home():
-    producers = session.query(Producer).all()
     products = session.query(Product).all()
 
     producers = [
@@ -43,45 +45,69 @@ def home():
     )
 
 @app.route('/market')
-@login_required
 def market():
     return render_template("market.html", title="Markets")
 
-
 @app.route('/products')
-@login_required
 def products():
-    return render_template("products.html", title="Products")
+    products = [
+        {"name": "Sourdough Bread", "category": "Baked Goods", "price": 3.50},
+        {"name": "Cheddar Cheese", "category": "Dairy", "price": 4.00},
+        {"name": "Milk", "category": "Dairy", "price": 1.50},
+        {"name": "Apples", "category": "Fruit & Veg", "price": 2.00},
+        {"name": "Carrots", "category": "Fruit & Veg", "price": 1.20},
+        {"name": "Croissant", "category": "Baked Goods", "price": 2.20},
+    ]
 
+    # Get filter + sort from URL
+    category = request.args.get('category')
+    sort = request.args.get('sort')
+
+    # Filter
+    if category:
+        products = [p for p in products if p["category"] == category]
+
+    # Sort
+    if sort == "price_asc":
+        products = sorted(products, key=lambda x: x["price"])
+    elif sort == "price_desc":
+        products = sorted(products, key=lambda x: x["price"], reverse=True)
+    elif sort == "name":
+        products = sorted(products, key=lambda x: x["name"])
+
+    return render_template("products.html", products=products)
 
 @app.route('/about')
 def about():
     return render_template("about.html", title="About Us")
 
-
-
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
-    print("REQUEST METHOD:", request.method)
-
     if request.method == 'POST':
-        print("FORM DATA:", request.form)
-
         username = request.form.get('username')
         password = request.form.get('password')
 
-        print("USERNAME:", username)
-        print("PASSWORD:", password)
+        user = session.query(User).filter_by(username=username).first()
 
-    return render_template("signin.html")
+        if user and check_password_hash(user.password_hash, password):
+            login_user(user)
+            return redirect(url_for('home'))
+        else:
+            flash("Invalid username or password")
+            return redirect(url_for('signin'))
+
+    return render_template("index.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
-        confirm_password = request.form['confirm_password'] 
+        username = request.form.get('username')
+        email = request.form.get('email')
+        if not email:
+            flash("Email is required")
+            return redirect(url_for('register'))
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
 
         # Check passwords match
         if password != confirm_password:
@@ -115,7 +141,7 @@ def register():
 
             print("User added:", username)
 
-    return render_template("register.html")
+    return render_template("signin.html")
 
 @app.route('/logout')
 def logout():

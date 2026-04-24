@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentSlide = 0;
     const slides = document.querySelectorAll(".slide");
 
-    if (slides.length === 0) return; // prevents crash
+    if (slides.length === 0) return;
 
     function showNextSlide() {
         slides[currentSlide].classList.remove("active");

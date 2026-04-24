@@ -1,4 +1,3 @@
-
 :root {
     --farm-green: #4CAF50;
     --deep-green: #2E7D32;
@@ -31,17 +30,17 @@ h1, h2, h3 {
     align-items: center;
 }
 
-    .navbar a {
-        color: white;
-        text-decoration: none;
-        margin-left: 20px;
-        font-weight: bold;
-        transition: opacity 0.2s;
-    }
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
 
-        .navbar a:hover {
-            opacity: 0.7;
-        }
+.navbar a:hover {
+    opacity: 0.7;
+}
 
 
 .hero {
@@ -58,6 +57,8 @@ h1, h2, h3 {
 
 .content {
     padding: 40px;
+    max-width: 1000px;
+    margin: auto;
 }
 
 
@@ -65,6 +66,7 @@ h1, h2, h3 {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 
@@ -78,22 +80,22 @@ h1, h2, h3 {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-    .producer-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
+.producer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
 
-    .producer-card .profession {
-        color: var(--earth-brown);
-        font-weight: bold;
-    }
+.producer-card .profession {
+    color: var(--earth-brown);
+    font-weight: bold;
+}
 
 .slideshow {
     position: relative;
     max-width: 600px;
-    height: 350px; /* 👈 ADD THIS */
-    overflow: hidden; /* 👈 prevents weird overflow */
-}
+    height: 350px;
+    overflow: hidden;
+    margin: 40px auto;
 
 .slide {
     display: none;
@@ -104,62 +106,154 @@ h1, h2, h3 {
     left: 0;
 }
 
-    .slide.active {
-        display: block;
+.slide.active {
+    display: block;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(0,0,0,0.6);
+    padding: 10px;
+    color: white;
+    border-radius: 6px;
+    z-index: 2;
+}
+
+button {
+    background-color: var(--farm-green);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: var(--deep-green);
+}
+
+input {
+    display: block;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 250px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+
+.flash {
+    background-color: var(--sunlight);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+
+.footer {
+    background-color: var(--earth-brown);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+.product-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-top: 4px solid #4CAF50;
+}
+
+.filters, .sorting {
+    margin-bottom: 20px;
+}
+
+.filters a, .sorting a {
+    margin-right: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.market-map {
+    position: relative;
+    max-width: 700px;
+    margin: auto;
+}
+
+.map-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.marker {
+    position: absolute;
+    font-size: 24px;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
+
+.marker:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    animation: bounce 1.5s;
+}
+
+.marker::after {
+    content: attr(data-name);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    display: none;
+    white-space: nowrap;
+}
+
+.marker:hover::after {
+    display: block;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translate(-50%, -50%);
     }
 
-    .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    50% {
+        transform: translate(-50%, -60%);
+    }
+}
 
-        .caption {
-            position: absolute;
-            bottom: 15px;
-            left: 15px;
-            background: rgba(0,0,0,0.6);
-            padding: 10px;
-            color: white;
-            border-radius: 6px;
-            z-index: 2;
-        }
-
-        button {
-            background-color: var(--farm-green);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-            button:hover {
-                background-color: var(--deep-green);
-            }
-
-        input {
-            display: block;
-            margin-bottom: 15px;
-            padding: 10px;
-            width: 250px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
-
-
-        .flash {
-            background-color: var(--sunlight);
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-
-
-        .footer {
-            background-color: var(--earth-brown);
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-        }
+.about-container {
+    max-width: 600px;
+    margin: 60px auto;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 18px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
