@@ -2,16 +2,20 @@
 
 {% block content %}
 
-<h2>Sign In</h2>
-
 <form method="POST">
     <label>Username:</label>
     <input type="text" name="username" required>
 
+    <label>Email:</label>
+    <input type="email" name="email" required>
+
     <label>Password:</label>
     <input type="password" name="password" required>
 
-    <button type="submit">Login</button>
+    <label>Confirm Password:</label>
+    <input type="password" name="confirm_password" required>
+
+    <button type="submit">Register</button>
 </form>
 
 {% endblock %}
