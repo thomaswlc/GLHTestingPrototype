@@ -2,32 +2,31 @@
 
 {% block content %}
 
-<h2>Our Products</h2>
+<section>
+    <h2>Our Products</h2>
 
-<!-- 🔍 Filters -->
-<div class="filters">
-    <a href="{{ url_for('products') }}">All</a>
-    <a href="{{ url_for('products', category='Baked Goods') }}">Baked Goods</a>
-    <a href="{{ url_for('products', category='Dairy') }}">Dairy</a>
-    <a href="{{ url_for('products', category='Fruit & Veg') }}">Fruit & Veg</a>
-</div>
-
-<!-- 🔽 Sorting -->
-<div class="sorting">
-    <a href="{{ url_for('products', sort='price_asc') }}">Price ↑</a>
-    <a href="{{ url_for('products', sort='price_desc') }}">Price ↓</a>
-    <a href="{{ url_for('products', sort='name') }}">Name</a>
-</div>
-
-<!-- 🧺 Product Grid -->
-<div class="product-grid">
-    {% for product in products %}
-    <div class="product-card">
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.category }}</p>
-        <p>£{{ product.price }}</p>
+    <div class="filters">
+        <a href="{{ url_for('products') }}">All</a>
+        <a href="{{ url_for('products', category='Baked Goods') }}">Baked Goods</a>
+        <a href="{{ url_for('products', category='Dairy') }}">Dairy</a>
+        <a href="{{ url_for('products', category='Fruit & Veg') }}">Fruit & Veg</a>
     </div>
-    {% endfor %}
-</div>
+
+    <div class="sorting">
+        <a href="{{ url_for('products', sort='price_asc') }}">Price ↑</a>
+        <a href="{{ url_for('products', sort='price_desc') }}">Price ↓</a>
+        <a href="{{ url_for('products', sort='name') }}">Name</a>
+    </div>
+
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.category }}</p>
+            <p>£{{ product.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
 {% endblock %}

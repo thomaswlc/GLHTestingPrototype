@@ -57,6 +57,14 @@ def products():
         {"name": "Apples", "category": "Fruit & Veg", "price": 2.00},
         {"name": "Carrots", "category": "Fruit & Veg", "price": 1.20},
         {"name": "Croissant", "category": "Baked Goods", "price": 2.20},
+        {"name": "Chocolate Croissant", "category": "Baked Goods", "price": 2.30},
+        {"name": "Potatoes", "category": "Fruit & Veg", "price": 1.10},
+        {"name": "Banana", "category": "Fruit & Veg", "price": 1.00},
+        {"name": "Orange", "category": "Fruit & Veg", "price": 2.20},
+        {"name": "Cream", "category": "Dairy", "price": 2.20},
+        {"name": "Butter", "category": "Dairy", "price": 2.20},
+        {"name": "Baguette", "category": "Baked Goods", "price": 2.20},
+
     ]
 
     # Get filter + sort from URL
@@ -96,7 +104,7 @@ def signin():
             flash("Invalid username or password")
             return redirect(url_for('signin'))
 
-    return render_template("index.html")
+    return render_template("signin.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -139,9 +147,7 @@ def register():
             flash("An error occurred while creating your account. Please try again.")
             return redirect(url_for('signin'))
 
-            print("User added:", username)
-
-    return render_template("signin.html")
+    return render_template("register.html")
 
 @app.route('/logout')
 def logout():

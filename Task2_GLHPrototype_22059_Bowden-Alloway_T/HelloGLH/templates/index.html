@@ -7,40 +7,21 @@
     <p>Connecting you directly to producers</p>
 </section>
 
-<section class="featured">
-    <h2>Featured products</h2>
-
-    <div class="slideshow">
-
-        <div class="slide active">
-            {% for product in products %}
-            <div class="slide {% if loop.first %}active{% endif %}">
-                <img src="{{ url_for('static', filename='ArtisanBreadStock.jpg') }}">
-                <div class="caption">{{ product.name }}</div>
-            </div>
-            {% endfor %}
-        </div>
-
-        <div class="slide">
-            {% for product in products %}
-            <div class="slide {% if loop.first %}active{% endif %}">
-                <img src="{{ url_for('static', filename='FruitBasketStock.jpeg') }}">
-                <div class="caption">{{ product.name }}</div>
-            </div>
-            {% endfor %}
-        </div>
-
-        <div class="slides">
-            {% for product in products %}
-            <div class="slide {% if loop.first %}active{% endif %}">
-                <img src="{{ url_for('static', filename='DairyProductStock.png') }}">
-                <div class="caption">{{ product.name }}</div>
-            </div>
-            {% endfor %}
-        </div>
-
+<section class="slideshow">
+    <div class="slide active">
+        <img src="{{ url_for('static', filename='FruitBasketStock.jpeg') }}">
+        <div class="caption">Fresh Organic Fruits</div>
     </div>
 
+    <div class="slide">
+        <img src="{{ url_for('static', filename='DairyProductStock.png') }}">
+        <div class="caption">Farm Fresh Dairy</div>
+    </div>
+
+    <div class="slide">
+        <img src="{{ url_for('static', filename='ArtisanBreadStock.png') }}">
+        <div class="caption">Artisan Baked Goods</div>
+    </div>
 </section>
 
 <section class="greeting">

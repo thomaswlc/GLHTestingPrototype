@@ -35,30 +35,30 @@
         </nav>
     </header>
 
-        <main class="content">
-            {% block content %}{% endblock %}
-        </main>
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
 
-        <footer class="footer">
-            <p>© Greenfield Local Hub</p>
-        </footer>
+    <footer class="footer">
+        <p>© Greenfield Local Hub</p>
+    </footer>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                let currentSlide = 0;
-                const slides = document.querySelectorAll(".slide");
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll(".slide");
 
-                if (slides.length === 0) return;
+            if (slides.length === 0) return;
 
-                function showNextSlide() {
-                    slides[currentSlide].classList.remove("active");
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    slides[currentSlide].classList.add("active");
-                }
+            function showNextSlide() {
+                slides[currentSlide].classList.remove("active");
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add("active");
+            }
 
-                setInterval(showNextSlide, 5000);
-            });
-        </script>
+            setInterval(showNextSlide, 5000);
+        });
+    </script>
 
 </body>
 
